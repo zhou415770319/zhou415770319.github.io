@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creating your first iOS Framework - 飞羽孟德 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=ha_wNvlyEnFus_Np_Ob5y7_Iem9v5jBzrmV-jPBredA1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory.css?v=oozI0uhJTJnVqwv7ezEAgc0akZ7xpEQ2Av67v9YiEJ41"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/feiyu-mdm/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/feiyu-mdm/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/feiyu-mdm/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'feiyu-mdm', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=ctBLm1XwHoXq0qpGtXIoueNc7JEplO8AsvWIbK0_NyA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/feiyu-mdm/"><img id="blogLogo" src="/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/feiyu-mdm/">飞羽孟德</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/feiyu-mdm/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E9%A3%9E%E7%BE%BD%E5%AD%9F%E5%BE%B7">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/feiyu-mdm/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/feiyu-mdm/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 91&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 4</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/feiyu-mdm/p/5630566.html">Creating your first iOS Framework</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>转自：https://robots.thoughtbot.com/creating-your-first-ios-framework</p>
+<p id="IyeTtw">If you&rsquo;ve ever tried to create your own iOS framework, you know that it&rsquo;s not for the faint of heart &ndash; managing dependencies and writing tests doesn&rsquo;t make it any easier. This tutorial will walk you through creating your first iOS framework from start to finish so that you can go out and create your own.</p>
+<p id="WgtOfw">We&rsquo;re going to build a framework that exposes a function called<code>RGBUIColor(red:green:blue)</code>&nbsp;that returns a new&nbsp;<code>UIColor</code>&nbsp;created from those values. We&rsquo;ll build it using&nbsp;<a href="https://developer.apple.com/swift/">Swift</a>, with&nbsp;<a href="https://github.com/Carthage/Carthage">Carthage</a>&nbsp;as our dependency manager. Our framework will be consumable using Carthage, CocoaPods, or git submodules.</p>
+<p id="LbLb">Let&rsquo;s begin!</p>
+<h2 id="setting-up-the-xcode-project"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#setting-up-the-xcode-project">Setting up the Xcode Project</a></h2>
+<ul>
+<li id="SFNSFN">Select&nbsp;<em>File &rarr; New &rarr; Project</em>.</li>
+<li id="SiFSiF">Select&nbsp;<em>iOS &rarr; Framework &amp; Library</em>&nbsp;from the left sidebar and select &ldquo;Cocoa Touch Library&rdquo; on the right.</li>
+<li id="CNaMst">Click &ldquo;Next&rdquo; and fill in the option prompts. Make sure to select the &ldquo;Include Unit Tests&rdquo; check box.</li>
+</ul>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkCFoISMWDTllrhfQWProjectOptionspng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/CFo5I571SMWDTllrhfQW_Project%20Options.png" alt="" /></p>
+<ul>
+<li id="SwySwy">Select where you&rsquo;d like to save your project.</li>
+<li id="UCGUCG">Uncheck &ldquo;Create Git repository on My Mac&rdquo;, we&rsquo;ll manually set it up later.</li>
+<li id="CCaCCa">Click &ldquo;Create&rdquo; and the project will open in Xcode.</li>
+<li id="GtFWpt">Go to&nbsp;<em>File &rarr; Save As Workspace</em>&nbsp;and save it in the same directory as your Xcode project with the same name. We put the project in a workspace because we&rsquo;ll be adding our Carthage dependencies as submodules; they must be in a workspace for Xcode to build them.</li>
+<li id="CtXCtX">Close the Xcode project with&nbsp;<em>File &rarr; Close Project</em>.</li>
+<li id="OtwOtw">Open the workspace with&nbsp;<em>File &rarr; Open</em>.</li>
+<li id="CotWnt">Click on the scheme on the top left of Xcode and select &ldquo;Manage Schemes&rdquo;. We need to mark our scheme as &ldquo;shared&rdquo;&nbsp;<a href="https://github.com/Carthage/Carthage#share-your-xcode-schemes">so that the project can be built with Carthage</a>.</li>
+<li id="LtRLtR">Locate the &ldquo;RGB&rdquo; scheme and check the &ldquo;Shared&rdquo; check box and click &ldquo;Close&rdquo;.</li>
+</ul>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkJTGfyKSBedXmQDMZRManageSchemespng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/J1T3GfyKSBed3XmQDMZR_Manage%20Schemes.png" alt="" /></p>
+<p id="LjoLjo">Let&rsquo;s jump over to the terminal.</p>
+<h2 id="initializing-git"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#initializing-git">Initializing Git</a></h2>
+<p id="FntFnt">First, navigate to the directory you saved your project in.</p>
+<ul>
+<li id="RgiRgi">Run&nbsp;<code>git init</code>&nbsp;to initialize an empty repository.</li>
+<li id="Ca.Ca.">Create a&nbsp;<code>.gitignore</code>&nbsp;which will keep out some pesky Xcode and dependency files we don&rsquo;t want to track in git.</li>
+</ul>
+<p id="HasWa.">Here&rsquo;s a&nbsp;<a href="https://github.com/github/gitignore/blob/master/Swift.gitignore">standard one for Swift projects</a>&nbsp;with a few modifications. We added&nbsp;<code>.DS_Store</code>and removed fastlane and extra comments.</p>
+<pre><code class="hljs">## OS X Finder
+.DS_Store
+
+## Build generated
+build/
+DerivedData
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+# Swift Package Manager
+.build/
+
+# Carthage
+Carthage/Build
+</code></pre>
+<h2 id="adding-carthage-and-dependencies"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#adding-carthage-and-dependencies">Adding Carthage and Dependencies</a></h2>
+<ul>
+<li id="CafWaC">Create a file in your project directory named&nbsp;<code>Cartfile</code>&nbsp;and the runtime dependencies to it. We&rsquo;ll add&nbsp;<a href="https://github.com/thoughtbot/Curry">Curry</a>.</li>
+</ul>
+<pre><code class="hljs">github "thoughtbot/Curry"
+</code></pre>
+<ul>
+<li id="CaCWuQ">Create a&nbsp;<code>Cartfile.private</code>. It will house private dependencies like our test frameworks. We&rsquo;ll use&nbsp;<a href="https://github.com/Quick/Quick">Quick</a>&nbsp;and&nbsp;<a href="https://github.com/Quick/Nimble">Nimble</a>.</li>
+</ul>
+<pre><code class="hljs">github "Quick/Quick"
+github "Quick/Nimble"
+</code></pre>
+<ul>
+<li id="CabIut">Create a&nbsp;<code>bin/setup</code>&nbsp;script. It&rsquo;s used to give our contributors (<em>and us</em>) a simple way to set up the project and the dependencies.</li>
+</ul>
+<pre><code class="sh hljs bash">mkdir bin
+touch bin/setup
+chmod +x bin/setup
+</code></pre>
+<ul>
+<li id="OubOub">Open up&nbsp;<code>bin/setup</code>&nbsp;and fill it with:</li>
+</ul>
+<pre><code class="sh hljs bash"><span class="meta">#!/usr/bin/env sh
+
+<span class="keyword">if ! <span class="built_in">command -v carthage &gt; /dev/null; <span class="keyword">then
+  <span class="built_in">printf <span class="string">'Carthage is not installed.\n'
+  <span class="built_in">printf <span class="string">'See https://github.com/Carthage/Carthage for install instructions.\n'
+  <span class="built_in">exit 1
+<span class="keyword">fi
+
+carthage update --platform iOS --use-submodules --no-use-binaries
+</span></span></span></span></span></span></span></span></span></span></code></pre>
+<p id="ItsIts">In this script, we make sure the user has&nbsp;<a href="https://github.com/Carthage/Carthage">Carthage</a>&nbsp;installed and run its&nbsp;<code>update</code>&nbsp;command to install the iOS dependencies.</p>
+<p id="WuuWun">We&rsquo;re using&nbsp;<code>--use-submodules</code>&nbsp;so that our dependencies are added as submodules. This allows users to consume our framework outside of Carthage if they want. We use<code>--no-use-binaries</code>&nbsp;so that our dependencies are built on our system.</p>
+<p id="WbcWbc">With&nbsp;<code>bin/setup</code>&nbsp;created, let&rsquo;s run it so that Carthage will download our dependencies.</p>
+<ul>
+<li id="IttItt">In the terminal, run&nbsp;<code>bin/setup</code>.</li>
+</ul>
+<p id="NwnNwn">Now we need to set up our project to build and link the new dependencies.</p>
+<h3 id="adding-dependencies-to-the-workspace"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#adding-dependencies-to-the-workspace">Adding Dependencies to the Workspace</a></h3>
+<p id="SodSod">Since our dependencies are submodules, we need to add them to our workspace.</p>
+<ul>
+<li id="OuCTcb">Open up&nbsp;<code>Carthage/Checkouts</code>&nbsp;and add each dependency&rsquo;s&nbsp;<code>.xcodeproj</code>&nbsp;to the root of the workspace. They can be dragged from Finder into the navigator of the Xcode project.</li>
+</ul>
+<p id="WydWyd">When you&rsquo;re done it should look like:</p>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkrBQNmPfQiOkafIzXKAddSubprojectspng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/rBQNmPf2QiOkafIz30XK_Add%20Subprojects.png" alt="" /></p>
+<h4 id="link-runtime-dependencies"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#link-runtime-dependencies">Link Runtime Dependencies</a></h4>
+<ul>
+<li id="WRsWRs">With &ldquo;RGB&rdquo; selected in the Navigator and the &ldquo;RGB&rdquo; target selected on the middle sidebar, select the &ldquo;Build Phases&rdquo; tab and expand the &ldquo;Link binary with libraries&rdquo; section.</li>
+<li id="CtiCti">Click the &ldquo;+&rdquo; icon and select the&nbsp;<code>Curry.framework</code>&nbsp;from the&nbsp;<code>Curry-iOS</code>&nbsp;target.</li>
+<li id="CACA">Click &ldquo;Add&rdquo;.</li>
+</ul>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkrqymaJQRuarRmBEjWselectframeworkpng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/rqymaJQ9Rua4r6RmBEjW_select-framework.png" alt="" /></p>
+<h4 id="link-development-dependencies"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#link-development-dependencies">Link Development Dependencies</a></h4>
+<ul>
+<li id="StRStR">Select the &ldquo;RGBTests&rdquo; target from the middle sidebar.</li>
+<li id="UtsUts">Using the same process as before, add the Quick and Nimble frameworks to the &ldquo;Link binary with libraries&rdquo; section for this target.</li>
+</ul>
+<p id="WadWcr"><em>When adding dependencies to each target, Xcode will automatically add them to the &ldquo;Framework Search Paths&rdquo; under the &ldquo;Build Settings&rdquo; tab. We can remove these from the &ldquo;RGB&rdquo; and &ldquo;RGBTests&rdquo; target because Xcode treats them as implicit dependencies due to them being in the same workspace.</em></p>
+<ul>
+<li id="SttStt">Select the target, locate the &ldquo;Framework Search Paths&rdquo; setting, highlight it, and press &ldquo;backspace&rdquo; on your keyboard.</li>
+</ul>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkfXCRyrrRrGRkTZsXEOWSearchPathspng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/fXCR3yrrRrGRkTZsXEOW_Search%20Paths.png" alt="" /></p>
+<ul>
+<li id="NliIcm">Next, look in the &ldquo;RGB&rdquo; project in the Navigator; you&rsquo;ll see there are three new frameworks at the root level. To keep this area organized, highlight all three, right click and select &ldquo;New group from selection&rdquo; to place them in a named group. I&rsquo;ll call mine &ldquo;Frameworks&rdquo;.</li>
+</ul>
+<p id="NtCNtC">Now that Carthage is set up, let&rsquo;s add CocoaPods.</p>
+<h2 id="adding-cocoapods-support"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#adding-cocoapods-support">Adding CocoaPods support</a></h2>
+<p id="TaCTaC">To add CocoaPods support, we need to create a&nbsp;<code>.podspec</code>&nbsp;at the root of our project and fill in our project info.</p>
+<ul>
+<li id="CafCaf">Create a file named&nbsp;<code>RGB.podspec</code>.</li>
+<li id="CapCap">Copy and paste the sample below into the file.</li>
+<li id="FitTaa">Fill in the options with your project&rsquo;s details. There are&nbsp;<a href="https://guides.cocoapods.org/syntax/podspec.html">a lot more options available to you</a>, but these are what&rsquo;s needed for this project.</li>
+</ul>
+<pre><code class="ruby hljs"><span class="symbol">Pod:<span class="symbol">:Spec.new <span class="keyword">do |spec|
+  spec.name = <span class="string">"RGB"
+  spec.version = <span class="string">"1.0.0"
+  spec.summary = <span class="string">"Sample framework from blog post, not for real world use."
+  spec.homepage = <span class="string">"https://github.com/jakecraige/RGB"
+  spec.license = { <span class="symbol">type: <span class="string">'MIT', <span class="symbol">file: <span class="string">'LICENSE' }
+  spec.authors = { <span class="string">"Your Name" =&gt; <span class="string">'your-email@example.com' }
+  spec.social_media_url = <span class="string">"http://twitter.com/thoughtbot"
+
+  spec.platform = <span class="symbol">:ios, <span class="string">"9.1"
+  spec.requires_arc = <span class="keyword">true
+  spec.source = { <span class="symbol">git: <span class="string">"https://github.com/jakecraige/RGB.git", <span class="symbol">tag: <span class="string">"v<span class="subst">#{spec.version}", <span class="symbol">submodules: <span class="keyword">true }
+  spec.source_files = <span class="string">"RGB/**/*.{h,swift}"
+
+  spec.dependency <span class="string">"Curry", <span class="string">"~&gt; 1.4.0"
+<span class="keyword">end
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p id="OltBws">One line to pay attention to is&nbsp;<code>spec.dependency "Curry", '~&gt; 1.4.0'</code>. Because we&rsquo;re supporting CocoaPods, we expect the consumers of our framework to be using it instead of Carthage, so we have to specify dependencies here and in the&nbsp;<code>Cartfile</code>.</p>
+<p id="OtiIag">Once this is set up we can run the&nbsp;<code>pod lib lint</code>&nbsp;command to test that everything is configured properly. If all goes well, we&rsquo;ll see something like this:</p>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkwnCsTPeGWkPRScreenShotatpng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/02wnC5s4TPe7GW2kP4R8_Screen%20Shot%202015-12-28%20at%2011.10.43.png" alt="" /></p>
+<p id="WtpBwd">With the project and dependencies set up, we&rsquo;re almost ready to write some code. Before we do that, let&rsquo;s create our first commit.</p>
+<pre><code class="sh hljs bash">git commit -am <span class="string">"Project and dependencies set up"
+</span></code></pre>
+<h2 id="writing-the-first-test"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#writing-the-first-test">Writing the First Test</a></h2>
+<p id="ORsIut">Open&nbsp;<code>RGBTests/RGBTests.swift</code>&nbsp;so that we can take a look at the default template. It uses&nbsp;<code>@testable</code>&nbsp;and&nbsp;<code>XCTest</code>, but we&rsquo;ll be changing both of these.</p>
+<p id="WrtTfi">We&rsquo;ll remove&nbsp;<code>@testable</code>&nbsp;because we want to test the public API that consumers of the framework will use. As our framework grows, we may need&nbsp;<code>@testable</code>&nbsp;to test parts that are not exposed publicly; generally we want to avoid that so we are testing what&rsquo;s exposed to the consumer. This feature is most useful in testing applications rather than frameworks.</p>
+<p id="FtAFtA">From the&nbsp;<a href="https://developer.apple.com/library/prerelease/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_7_0.html#//apple_ref/doc/uid/TP40015242-SW1">Apple Docs on Testability</a>:</p>
+<blockquote>
+<p>With testability, you are now able to write tests of Swift 2.0 frameworks and apps without having to make all of your internal routines public. Use @testable import {ModuleName} in your test source code to make all public and internal routines usable by XCTest targets, but not by other framework and app targets.</p>
+</blockquote>
+<p id="WuQQpa">We&rsquo;ll use Quick and Nimble for testing. Quick provides a nicer testing interface with a behavior-driven style that is very similar to RSpec and Specta; Nimble gives us many powerful assertions and the ability to write asynchronous code with less boilerplate.</p>
+<p id="OtcOtc">Once those changes are made, the test file should look like:</p>
+<pre><code class="swift hljs"><span class="keyword">import Quick
+<span class="keyword">import Nimble
+<span class="keyword">import RGB
+
+<span class="class"><span class="keyword">class <span class="title">RGBTests: <span class="title">QuickSpec {
+    <span class="keyword">override <span class="function"><span class="keyword">func <span class="title">spec<span class="params">() {
+        describe(<span class="string">"RGB") {
+            it(<span class="string">"works") {
+                expect(<span class="literal">true).to(beTrue())
+            }
+        }
+    }
+}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p id="RttRtt">Run the tests with ⌘U or&nbsp;<em>Product &rarr; Test</em>&nbsp;and they should be green.</p>
+<p id="AwdAwd">And&hellip;&nbsp;we&rsquo;re done!</p>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkeqpNpTwZuxIulGQcelebrategif"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/eq3pN78pTwZux14IulGQ_celebrate.gif" alt="" /></p>
+<p id="JkLws">Just kidding. Let&rsquo;s write some real tests.</p>
+<p id="WetWet">We expect that calling&nbsp;<code>RGBUIColor(red: 195, green: 47, blue: 52)</code>&nbsp;will return a beautiful &ldquo;thoughtbot red&rdquo;&nbsp;<code>UIColor</code>.</p>
+<p id="IctIct">In code, this looks like:</p>
+<pre><code class="swift hljs">describe(<span class="string">"RGBUIColor") {
+    it(<span class="string">"is a correct representation of the values") {
+        <span class="keyword">let thoughtbotRed = <span class="type">UIColor(
+            red: <span class="type">CGFloat(<span class="number">195/<span class="number">255),
+            green: <span class="type">CGFloat(<span class="number">47/<span class="number">255),
+            blue: <span class="type">CGFloat(<span class="number">52/<span class="number">255),
+            alpha: <span class="number">1
+        )
+        <span class="keyword">let color = <span class="type">RGBUIColor(red: <span class="number">195, green: <span class="number">47, blue: <span class="number">52)
+
+        expect(color).to(<span class="built_in">equal(thoughtbotRed))
+    }
+}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p id="IwrStc">If we run the tests, now they will fail as we expect. Swift&rsquo;s type checking will prevent us from running the tests because we never defined the&nbsp;<code>RGBUIColor</code>&nbsp;function.</p>
+<p id="LdtLdt">Let&rsquo;s do that.</p>
+<h2 id="writing-the-implementation"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#writing-the-implementation">Writing the Implementation</a></h2>
+<p id="RcoRco">Right click on the &ldquo;RGB&rdquo; group in the Navigator and select &ldquo;New File&rdquo;.</p>
+<p id="CaSFiw">Create a Swift file called&nbsp;<code>RGBUIColor.swift</code>&nbsp;and save it. Fill it with this implementation:</p>
+<pre><code class="swift hljs"><span class="keyword">import Curry
+
+<span class="function"><span class="keyword">func <span class="title">RGBUIColor<span class="params">(red red: Int, green: Int, blue: Int) -&gt; <span class="type">UIColor {
+    <span class="keyword">return curry(createColor)(red)(green)(blue)
+}
+
+<span class="keyword">private <span class="function"><span class="keyword">func <span class="title">createColor<span class="params">(red: Int, green: Int, blue: Int) -&gt; <span class="type">UIColor {
+    <span class="keyword">return <span class="type">UIColor(
+        red: <span class="type">CGFloat(red/<span class="number">255),
+        green: <span class="type">CGFloat(green/<span class="number">255),
+        blue: <span class="type">CGFloat(blue/<span class="number">155),
+        alpha: <span class="number">1
+    )
+}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p id="TuoTia"><em>The use of&nbsp;<code>curry</code>&nbsp;here is used as an example of using a runtime dependency. This is a non-standard use and doesn&rsquo;t provide any value here.</em></p>
+<p id="NlrNlr">Now let&rsquo;s run the tests!</p>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkaeqbpPuQByUMgLpBtEyUnresolvedIdentifierpng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/a5eqbpPuQByUMgLpBtEy_Unresolved%20Identifier.png" alt="" /></p>
+<p id="AfgWcd">At first glance, this error may seem a bit odd. We clearly defined the&nbsp;<code>RGBUIColor</code>function,&nbsp;<em>right</em>?</p>
+<p id="WdbWdb">We did,&nbsp;<em>but it&rsquo;s not marked as&nbsp;<code>public</code>.</em></p>
+<p id="WtmIyw">What this means is that if someone tries to use our framework, they won&rsquo;t be able to see this function. If you want to see the difference in action, add&nbsp;<code>@testable</code>&nbsp;back and your tests will pass.</p>
+<p id="EteIhu">Experiencing this error is why we removed the&nbsp;<code>@testable</code>&nbsp;from the&nbsp;<code>import</code>&nbsp;at the beginning. It helps us to catch these kinds of errors earlier, before we release our framework to others.</p>
+<p id="TftTft">To fix this, let&rsquo;s mark the function as&nbsp;<code>public</code>&nbsp;like so:</p>
+<pre><code class="swift hljs"><span class="keyword">public <span class="function"><span class="keyword">func <span class="title">RGBUIColor<span class="params">(red red: Int, green: Int, blue: Int) -&gt; <span class="type">UIColor {
+    <span class="keyword">return curry(createColor)(red)(green)(blue)
+}
+</span></span></span></span></span></span></span></code></pre>
+<p id="LrtLrt">Let&rsquo;s run the tests!</p>
+<p id="httpsimagesthoughtbotcomcreatingyourfirstiosframeworkLhsIDVWQtGggwVkRdiGreenTestspng"><img src="https://images.thoughtbot.com/creating-your-first-ios-framework/LhsID2VWQtGggw9VkRdi_Green%20Tests.png" alt="" /></p>
+<p id="WGWG">We&rsquo;re Green!</p>
+<p id="LctLct">Let&rsquo;s commit this bad boy.</p>
+<pre><code class="sh hljs bash">git commit -am <span class="string">"Completed my first iOS framework!"
+</span></code></pre>
+<h2 id="that39s-all-folks"><a class="heading-link" href="https://robots.thoughtbot.com/creating-your-first-ios-framework#that39s-all-folks">That&rsquo;s all folks!</a></h2>
+<p id="TiAam">That&rsquo;s it. There were a lot of steps but we&rsquo;ve successfully created a&nbsp;<em>marginally useful</em>framework that could be published to GitHub. As a matter of fact, we published the<a href="https://github.com/jakecraige/RGB">source for this framework on GitHub</a>.</p>
+<p id="WcwWcw">We can&rsquo;t wait to see what kinds of awesome open-source projects you&rsquo;ll create.</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2016-06-30 16:55</span> <a href='http://www.cnblogs.com/feiyu-mdm/'>飞羽孟德</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="https://i.cnblogs.com/EditPosts.aspx?postid=5630566" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(5630566);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=253896,cb_entryId=5630566,cb_blogApp=currentBlogApp,cb_blogUserGuid='937d6dc0-caa2-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2016/6/30 16:55:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2016 飞羽孟德
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+</body>
+</html>
