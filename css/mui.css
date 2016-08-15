@@ -2117,7 +2117,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 }
 .mui-table-view-icon .mui-table-view-cell:after
 {
-    left: 50px;
+    left: 40px;
 }
 
 .mui-table-view-chevron .mui-table-view-cell
