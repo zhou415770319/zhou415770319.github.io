@@ -7,29 +7,9 @@
 		<title>zhoufei</title>
 		<script src="js/mui.min.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet" />
-		<script type="text/javascript" charset="utf-8">
-			mui.init();
-			var bokeInfos = new Array("iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！",
-				"知名应用背后的第三方开源项目",
-				"Create an Embedded Framework in Xcode with Swift",
-				"Use Swift Dynamic Framework （如何科学地引用第三方 Swift 库)",
-				"用workspace管理工程，并解决多静态库依赖",
-				"揭秘 iOS App Extension 开发 —— Today 篇");
-			var bokeUrls = new Array("http://www.cnblogs.com/feiyu-mdm/p/5731603.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5711617.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5632479.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5630528.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5629417.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5613192.html"
-			);
-
-			function loadCellInfo() {
-				for(var i = 0; i < bokeInfos.length; i++) {
-					var str = "<li class='mui-table-view-cell'>" + "<a class='mui-navigate-right' href=" + "html/bokeinfo.html" + ">" + bokeInfos[i] + "</a></li>";
-					document.write(str);
-				}
-			}
-		</script>
+		<script src="js/websql.js"></script>
+		
+		
 	</head>
 
 	<body>
@@ -38,175 +18,35 @@
 		<header id="header" class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">飞羽-博客</h1>
 		</header>
-		<style>
-			.mui-control-content {
-				background-color: white;
-				min-height: 300px;
-			}
-			
-			.mui-control-content .mui-loading {
-				margin-top: 50px;
-			}
-		</style>
+
 		<div class="mui-content">
-			<div id="slider" class="mui-slider">
-				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<a class="mui-control-item" href="#item1mobile">
-						博客园
-					</a>
-					<a class="mui-control-item" href="#item2mobile">
-						新浪
-					</a>
-					<a class="mui-control-item" href="#item3mobile">
-						github
-					</a>
-				</div>
-				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
-				<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<ul class="mui-table-view">
-									<script>
-										loadCellInfo();
-									</script>
-									<!--<script>
-									var cars=["ssdf","jks","sjdb"];
-										for(var i = 0; i < cars.length; i++) {
-											var str = "<li class='mui-table-view-cell'>"+cars[i]+"</li>";
-											document.write(str + "<br>");
-										}
-									</script>-->
-									<!--<li class="mui-table-view-cell">
-										<a href="http://www.cnblogs.com/feiyu-mdm/p/5731603.html">第一个选项卡子项-1</a>
-									</li>
-									<li class="mui-table-view-cell">
-										<a href="http://www.cnblogs.com/feiyu-mdm/p/5711617.html">第一个选项卡子项-2</a>
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-3
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-4
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-5
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-6
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-7
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-8
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-9
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-10
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-11
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-12
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-13
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-14
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-15
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-16
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-17
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-18
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-19
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-20
-									</li>-->
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div id="item2mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll2" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<div id="item3mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll3" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<a href="WeddingLink.html">weddingLink</a>
-			</div>
+			
+			<!--<div id="status" name="status">状态信息</div>-->
+			<script>
+				var menu = null,
+					main = null;
+				var showMenu = false;
+				mui.init({
+					swipeBack: false,
+					statusBarBackground: '#f7f7f7',
+					gestureConfig: {
+						doubletap: true
+					},
+					subpages: [{
+						id: 'bokecontent',
+						url: 'bokecontent.html',
+						styles: {
+							top: '45px',
+							bottom: 0,
+							bounce: 'vertical'
+						}
+					}]
+				});
+			</script>
 
 		</div>
 
-		<script src="../js/mui.min.js"></script>
-		<script>
-			mui.init({
-				swipeBack: false
-			});
-			(function($) {
-				$('.mui-scroll-wrapper').scroll({
-					indicators: true //是否显示滚动条
-				});
-				var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-9</li><li class="mui-table-view-cell">第二个选项卡子项-0</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
-				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
-				var item2 = document.getElementById('item2mobile');
-				var item3 = document.getElementById('item3mobile');
-				document.getElementById('slider').addEventListener('slide', function(e) {
-					if(e.detail.slideNumber === 1) {
-						if(item2.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item2.querySelector('.mui-scroll').innerHTML = html2;
-							}, 500);
-						}
-					} else if(e.detail.slideNumber === 2) {
-						if(item3.querySelector('.mui-loading')) {
-							setTimeout(function() {
-								item3.querySelector('.mui-scroll').innerHTML = html3;
-							}, 500);
-						}
-					}
-				});
-				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
-				$('.mui-input-group').on('change', 'input', function() {
-					if(this.checked) {
-						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
-						//force repaint
-						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
-					}
-				});
-			})(mui);
-		</script>
+		
 
 	</body>
 

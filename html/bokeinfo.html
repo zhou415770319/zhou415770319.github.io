@@ -10,26 +10,42 @@
 		<script type="text/javascript">
 			mui.init()
 
-			function loadTitle() {
+			function loadTitleNmae() {
 				var displayBokeUrl = "hehe";
 				var str = "<h1 id='title' class='mui-title'>" + displayBokeUrl + "</h1>";
 				document.write(str);
 		</script>
+		
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+						<!--<h1 class="mui-title">zhoufei</h1>-->
+
+			<script src="../js/mui.min.js"></script>
+			<script type="text/javascript">
+			
+				console.log("url =" + window.location.href);
+				var str = "<h1 class='mui-title'>" + window.location.href + "</h1>";
+				document.write(str);
+				loa
+				var urlInfo = window.location.href;//获取当前页面的url
+				var len=urlinfo.length;//获取url的长度 
+				var offset=urlinfo.indexOf("?");//设置参数字符串开始的位置 
+				var newsidinfo=urlinfo.substr(offset,len)//取出参数字符串 这里会获得类似“id=1”这样的字符串 
+				var newsids=newsidinfo.split("=");//对获得的参数字符串按照“=”进行分割 
+				var newsid=newsids[1];//得到参数值 
+				var newsname=newsids[0];//得到参数名字
+				
+				loadTitleName();
+			</script>
 			
 		</header>
 		<div class="mui-content">
 			<script>
 			</script>
-			<script type="text/javascript">
-				load();
-			</script>
-			<p>hahah</p>
-			<h1>hehe</h1>
+
 		</div>
 
 	</body>

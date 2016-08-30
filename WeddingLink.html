@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 	</head>
+
 	<body>
-		<a href="http://wyy.photowww.com/action/newXitie.aspx?userCode=sjzlwxc20160813004" target="_blank">
-	<img src="images/wedding.png" alt="图片链接已失效" />
-</a>
+		<!--<div class="mui-content">
+			<a href="http://wyy.photowww.com/action/newXitie.aspx?userCode=sjzlwxc20160813004" target="_blank">
+				<img src="images/wedding.png" alt="图片链接已失效" />
+			</a>
+		</div>-->
+		
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$(function() {
+				$.ajax({
+					async: false,
+					type: "GET",
+					dataType: 'jsonp',
+					jsonp: 'callback',
+					jsonpCallback: 'callbackfunction',
+					url: "http://www.cnblogs.com/feiyu-mdm",
+					data: "",
+					timeout: 3000,
+					contentType: "application/json;utf-8",
+					success: function(msg) {
+						snjk
+						console.log(msg);
+					}
+				});
+			})
+		</script>
 	</body>
+
 </html>

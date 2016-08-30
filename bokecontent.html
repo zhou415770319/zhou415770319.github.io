@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			var bokeInfos = new Array("iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！",
+				"知名应用背后的第三方开源项目",
+				"Create an Embedded Framework in Xcode with Swift",
+				"Use Swift Dynamic Framework （如何科学地引用第三方 Swift 库)",
+				"用workspace管理工程，并解决多静态库依赖",
+				"揭秘 iOS App Extension 开发 —— Today 篇");
+			var bokeUrls = new Array("http://www.cnblogs.com/feiyu-mdm/p/5731603.html",
+				"http://www.cnblogs.com/feiyu-mdm/p/5711617.html",
+				"http://www.cnblogs.com/feiyu-mdm/p/5632479.html",
+				"http://www.cnblogs.com/feiyu-mdm/p/5630528.html",
+				"http://www.cnblogs.com/feiyu-mdm/p/5629417.html",
+				"http://www.cnblogs.com/feiyu-mdm/p/5613192.html"
+			);
+
+			function loadCellInfo() {
+				var tem;
+				for(var i = 0; i < bokeInfos.length; i++) {
+					var str = "<li class='mui-table-view-cell'>" + "<a class='mui-navigate-right' href=" + "html/bokeinfo.html?title=" + bokeInfos[i] + ">" + bokeInfos[i] + "</a></li>";
+//					document.write(str);
+					tem += str;
+				}
+				return "<ul class='mui-table-view'>" + tem + "</ul>";
+
+			}
+		</script>
+
+	</head>
+
+	<body>
+		<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 300px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+		</style>
+		<div id="slider" class="mui-slider">
+			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a class="mui-control-item mui-active" href="#item1mobile">
+					博客园
+				</a>
+				<a class="mui-control-item" href="#item2mobile">
+					新浪
+				</a>
+				<a class="mui-control-item" href="#item3mobile">
+					github
+				</a>
+			</div>
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>
+							<!--<ul class="mui-table-view">
+								<script>
+									loadCellInfo();
+								</script>
+							</ul>-->
+						</div>
+					</div>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div id="item3mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll3" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<a href="WeddingLink.html">weddingLink</a>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+			(function($) {
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+				var html1 = loadCellInfo();
+				var html2 = loadCellInfo();
+				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
+				var item1 = document.getElementById('item1mobile');
+				var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if(e.detail.slideNumber === 0) {
+						if(item1.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item1.querySelector('.mui-scroll').innerHTML = html1;
+							}, 500);
+						}
+					} else if(e.detail.slideNumber === 1) {
+						if(item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item2.querySelector('.mui-scroll').innerHTML = html2;
+							}, 500);
+						}
+					} else if(e.detail.slideNumber === 2) {
+						if(item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item3.querySelector('.mui-scroll').innerHTML = html3;
+							}, 500);
+						}
+					}
+				});
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				$('.mui-input-group').on('change', 'input', function() {
+					if(this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+			})(mui);
+		</script>
+	</body>
+
+</html>
