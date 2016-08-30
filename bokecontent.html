@@ -7,29 +7,36 @@
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
-			var bokeInfos = new Array("iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！",
-				"知名应用背后的第三方开源项目",
-				"Create an Embedded Framework in Xcode with Swift",
-				"Use Swift Dynamic Framework （如何科学地引用第三方 Swift 库)",
-				"用workspace管理工程，并解决多静态库依赖",
-				"揭秘 iOS App Extension 开发 —— Today 篇");
-			var bokeUrls = new Array("http://www.cnblogs.com/feiyu-mdm/p/5731603.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5711617.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5632479.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5630528.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5629417.html",
-				"http://www.cnblogs.com/feiyu-mdm/p/5613192.html"
-			);
+			var bokeInfos = new Array({"title":"iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！","url":"http://www.cnblogs.com/feiyu-mdm/p/5731603.html"}
+			,{"title":"知名应用背后的第三方开源项目","url":"http://www.cnblogs.com/feiyu-mdm/p/5711617.html"}
+			,{"title":"Create an Embedded Framework in Xcode with Swift","url":"http://www.cnblogs.com/feiyu-mdm/p/5632479.html"}
+			,{"title":"Use Swift Dynamic Framework （如何科学地引用第三方 Swift 库)","url":"http://www.cnblogs.com/feiyu-mdm/p/5630528.html"}
+			,{"title":"用workspace管理工程，并解决多静态库依赖","url":"http://www.cnblogs.com/feiyu-mdm/p/5629417.html"}
+			,{"title":"揭秘 iOS App Extension 开发 —— Today 篇","url":"http://www.cnblogs.com/feiyu-mdm/p/5613192.html"}
+			,{"title":"iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！","url":"http://www.cnblogs.com/feiyu-mdm/p/5731603.html"}
+			,{"title":"iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！","url":"http://www.cnblogs.com/feiyu-mdm/p/5731603.html"})
+//			var bokeInfos = new Array("iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！",
+//				"知名应用背后的第三方开源项目",
+//				"Create an Embedded Framework in Xcode with Swift",
+//				"Use Swift Dynamic Framework （如何科学地引用第三方 Swift 库)",
+//				"用workspace管理工程，并解决多静态库依赖",
+//				"揭秘 iOS App Extension 开发 —— Today 篇");
+//			var bokeUrls = new Array("http://www.cnblogs.com/feiyu-mdm/p/5731603.html",
+//				"http://www.cnblogs.com/feiyu-mdm/p/5711617.html",
+//				"http://www.cnblogs.com/feiyu-mdm/p/5632479.html",
+//				"http://www.cnblogs.com/feiyu-mdm/p/5630528.html",
+//				"http://www.cnblogs.com/feiyu-mdm/p/5629417.html",
+//				"http://www.cnblogs.com/feiyu-mdm/p/5613192.html"
+//			);
 
 			function loadCellInfo() {
 				var tem;
 				for(var i = 0; i < bokeInfos.length; i++) {
-					var str = "<li class='mui-table-view-cell'>" + "<a class='mui-navigate-right' href=" + "html/bokeinfo.html?title=" + bokeInfos[i] + ">" + bokeInfos[i] + "</a></li>";
+					var str = '<li class="mui-table-view-cell">' + '<a class="mui-navigate-right" href=' + 'html/bokeinfo.html?title=' + bokeInfos[i].title + '>' + bokeInfos[i].title + '</a></li>';
 //					document.write(str);
 					tem += str;
 				}
-				return "<ul class='mui-table-view'>" + tem + "</ul>";
-
+				return tem;
 			}
 		</script>
 
@@ -63,15 +70,16 @@
 				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 					<div id="scroll1" class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<div class="mui-loading">
+							<!--<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>
-							<!--<ul class="mui-table-view">
+							</div>-->
+							<ul class="mui-table-view">
 								<script>
-									loadCellInfo();
+									var str = loadCellInfo();
+									document.write(str);
 								</script>
-							</ul>-->
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -98,7 +106,7 @@
 
 				</div>
 			</div>
-			<a href="WeddingLink.html">weddingLink</a>
+			<a href="wordpress/wp-login.php">weddingLink</a>
 
 		</div>
 		<script src="../js/mui.min.js"></script>
