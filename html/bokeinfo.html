@@ -9,41 +9,108 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
+				// H5 plus事件处理
+			function plusReady() {}
+			if(window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener("plusready", plusReady, false);
+			}
+
+			// 关闭自身窗口
+			function closeme() {
+				var ws = plus.webview.currentWebview();
+				plus.webview.close(ws);
+			}
 
 			function loadTitleNmae() {
 				var displayBokeUrl = "hehe";
 				var str = "<h1 id='title' class='mui-title'>" + displayBokeUrl + "</h1>";
 				document.write(str);
+			}
+
+			function getTitle() {
+				var urlinfo = window.location.href; //获取当前页面的url
+				var len = urlinfo.length; //获取url的长度 
+				var offset = urlinfo.indexOf("?"); //设置参数字符串开始的位置 
+				var newsidinfo = urlinfo.substr(offset, len) //取出参数字符串 这里会获得类似“id=1”这样的字符串 
+				var newsids = newsidinfo.split("="); //对获得的参数字符串按照“=”进行分割 
+				var newsid = newsids[1]; //得到参数值 
+				var newsname = newsids[0]; //得到参数名字
+				return newsid;
+			}
+
+			function GetArgsFromHref(sArgName)　　 {
+				var sHref = window.location.href;
+				console.log("href = " + sHref);
+				//CuPlayer.com提示：测试数据 
+				//实际情况是用window.location.href得到URL 
+				var args = sHref.split("?");　　
+				var retval = "";　　
+				if(args[0] == sHref) /*参数为空*/ 　　 {　　
+					return retval; /*CuPlayer.com提示：无需做任何处理*/ 　　
+				}　　
+				var str = args[1];　　
+				args = str.split("&");　　
+				for(var i = 0; i < args.length; i++)　　 {　　
+					str = args[i];　　
+					var arg = str.split("=");　　
+					if(arg.length <= 1) continue;　　
+					if(arg[0] == sArgName) retval = arg[1];　　
+				}　　
+				return retval;
+				//								alert(retval);　　
+			}
+
+			function GetRequest() {
+				var url = location.search; //获取url中"?"符后的字串
+				var theRequest = new Object();
+				if(url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for(var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+
+			function loadContent() {
+				var contentHtml = GetArgsFromHref("url");
+				var str = "<h1 class='mui-title'>" + decodeURI(contentHtml) + "</h1>";
+
+				var w = plus.webview.create(decodeURI(contentHtml));
+				w.show();
+			}
 		</script>
-		
+
 	</head>
 
 	<body>
+
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-						<!--<h1 class="mui-title">zhoufei</h1>-->
+			<!--<h1 class="mui-title">zhoufei</h1>-->
 
 			<script src="../js/mui.min.js"></script>
 			<script type="text/javascript">
-			
-				console.log("url =" + window.location.href);
-				var str = "<h1 class='mui-title'>" + window.location.href + "</h1>";
+				var title = GetArgsFromHref("title");
+				var str = "<h1 class='mui-title'>" + decodeURI(title) + "</h1>";
 				document.write(str);
-				loa
-				var urlInfo = window.location.href;//获取当前页面的url
-				var len=urlinfo.length;//获取url的长度 
-				var offset=urlinfo.indexOf("?");//设置参数字符串开始的位置 
-				var newsidinfo=urlinfo.substr(offset,len)//取出参数字符串 这里会获得类似“id=1”这样的字符串 
-				var newsids=newsidinfo.split("=");//对获得的参数字符串按照“=”进行分割 
-				var newsid=newsids[1];//得到参数值 
-				var newsname=newsids[0];//得到参数名字
-				
-				loadTitleName();
 			</script>
-			
 		</header>
-		<div class="mui-content">
+		<div id="content_html" class="mui-content">
+			<!--<button onclick="closeme()">load</button>-->
+			<script type="text/javascript" src="jquery.js"></script>
 			<script>
+				var contentHtml = GetArgsFromHref("url");
+				var str = "<h1 class='mui-title'>" + decodeURI(contentHtml) + "</h1>";
+				console.log(decodeURI(contentHtml));
+				$.get("decodeURI(contentHtml)", function(v) {
+					var str = v.match(/<body[^<>]*>([\s\S]+)<\/body>/)[1];
+					$("#content_html").html(str);
+				}); //				var w = plus.webview.create(decodeURI(contentHtml));
+				//				w.show();
 			</script>
 
 		</div>
