@@ -69,9 +69,9 @@
 				"url": "http://www.cnblogs.com/feiyu-mdm/p/5570408.html"
 			})
 
-			var xlbokeInfos = new Array({
-				"title": "iOS开发经常用到的国外网站，让我们接轨国外的最新技术吧！",
-				"url": "http://www.cnblogs.com/feiyu-mdm/p/5731603.html"
+			var jsbokeInfos = new Array({
+				"title": "Unix常用命令",
+				"url": "https://github.com/zhou415770319/ZFFunctionCode/blob/master/README.md"
 			}, {
 				"title": "知名应用背后的第三方开源项目",
 				"url": "http://www.cnblogs.com/feiyu-mdm/p/5711617.html"
@@ -205,11 +205,11 @@
 				return '<ul class="mui-table-view">' + tem + '</ul>';
 			}
 
-			function loadXLCellInfo() {
+			function loadJSCellInfo() {
 				var tem = "";
-				for(var i = 0; i < bokeInfos.length; i++) {
-//					console.log(bokeInfos[i].title);
-					var str = '<li class="mui-table-view-cell">' + '<a class="mui-navigate-right" href=' + bokeInfos[i].url + '>' + bokeInfos[i].title + '</a></li>';
+				for(var i = 0; i < jsbokeInfos.length; i++) {
+					var uri = encodeURI(jsbokeInfos[i].title);
+					var str = '<li class="mui-table-view-cell">' + '<a class="mui-navigate-right" href=' + 'html/bokeinfo.html?title=' + uri + '&url='+ encodeURI(jsbokeInfos[i].url) + '>' + jsbokeInfos[i].title + '</a></li>';
 					//					document.write(str);
 					tem += str;
 				}
@@ -218,9 +218,9 @@
 
 			function loadGithubCellInfo() {
 				var tem = "";
-				for(var i = 0; i < bokeInfos.length; i++) {
-//					console.log(bokeInfos[i].title);
-					var str = '<li class="mui-table-view-cell">' + '<a class="mui-navigate-right" href=' + 'html/bokeinfo.html?title=' + bokeInfos[i].title + '>' + bokeInfos[i].title + '</a></li>';
+				for(var i = 0; i < githubInfos.length; i++) {
+					var uri = encodeURI(githubInfos[i].title);
+					var str = '<li class="mui-table-view-cell">' + '<a class="mui-navigate-right" href=' + 'html/bokeinfo.html?title=' + uri + '&url='+ encodeURI(githubInfos[i].url) + '>' + githubInfos[i].title + '</a></li>';
 					//					document.write(str);
 					tem += str;
 				}
@@ -309,7 +309,7 @@
 					indicators: true //是否显示滚动条
 				});
 				var html1 = loadBKYCellInfo();
-				var html2 = loadXLCellInfo();
+				var html2 = loadJSCellInfo();
 				var html3 = loadGithubCellInfo();
 				//				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell"><a class="mui-navigate-right" href="html/bokeinfo.html?title='+'<?php echo urlencode("'+ '周飞' +'")?>'+'">第三个选项卡子项-1</a></li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
 				//				'<?php echo urlencode('+ bokeInfos[i].title  +')?>'
